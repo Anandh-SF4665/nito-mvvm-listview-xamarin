@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewXamarin"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:sfbusyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="ListViewXamarin.MainPage" Padding="{OnPlatform iOS='0,40,0,0'}">
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Text="Load ListView" Command="{Binding LoadDataCommand}" HeightRequest="50"/>
+            <sfbusyindicator:SfBusyIndicator Grid.Row="1" AnimationType="Gear" TextColor="BlueViolet" IsBusy="{Binding IsLoading}"/>
+            <syncfusion:SfListView x:Name="listView" AutoFitMode="Height" Grid.Row="1" ItemSpacing="5" ItemsSource="{Binding UserInfo}" >
+                <syncfusion:SfListView.ItemTemplate >
+                    <DataTemplate>
+                        <Frame HasShadow="True" BackgroundColor="#f4f4f4">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding [username]}" HorizontalOptions="Start" TextColor="Black" FontSize="16" />
+                                <Label Grid.Row="1" Text="{Binding [website]}" HorizontalOptions="Start" TextColor="Black"/>
+                                <Label Grid.Row="2" Text="{Binding [phone]}" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                                <Label Grid.Row="3" Text="{Binding [email]}" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
