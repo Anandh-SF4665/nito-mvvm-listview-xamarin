@@ -1,2 +1,1 @@
-# nito-mvvm-listview-xamarin
-How to use Nito.MVVM in Xamarin.Forms Listview (SfListView)?
+**[View document in Syncfusion Xamarin Knowledge base](https://www.syncfusion.com/kb/12214/how-to-use-nito-mvvm-in-xamarin-forms-listview-sflistview)**
